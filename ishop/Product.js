@@ -15,7 +15,7 @@ const Product = React.createClass({
           src: element.photo,
         }),
         React.DOM.div(
-          { className: "ProductDescription" },
+          { className: "ProductDescriptionName" },
           "Наименование:  " + element.name
         ),
         React.DOM.div(

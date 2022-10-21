@@ -6,11 +6,17 @@
 }
 
 .ProductContainer {
+  display: flex;
+  justify-content: space-around;
   text-align: left;
   font-style: italic;
 }
 .ProductDescription {
   font-style: italic;
+}
+.ProductDescriptionName {
+  font-weight: 700;
+  font-style: normal;
 }
 .ProductDescriptionPhoto {
   height: 200px;
