@@ -1,10 +1,22 @@
 const Product = React.createClass({
   displayName: "Product",
+
+  propTypes: {
+    store: React.PropTypes.string.idRequied,
+    productCard: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        photo: React.PropTypes.string.idRequied,
+        name: React.PropTypes.string.idRequied,
+        price: React.PropTypes.number.idRequied,
+        quantity: React.PropTypes.number.idRequied,
+      })
+    ),
+  },
+
   render: function () {
     var productCard = [];
 
-    for (let i = 0; i < this.props.products.length; i++) {
-      var element = this.props.products[i];
+    this.props.products.forEach(function (element) {
       var productCode = React.DOM.div(
         {
           key: element.key,
@@ -28,7 +40,7 @@ const Product = React.createClass({
         )
       );
       productCard.push(productCode);
-    }
+    });
 
     return React.DOM.div(
       { className: "StoreName" },
