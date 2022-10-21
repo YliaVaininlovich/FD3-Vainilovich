@@ -1,9 +1,18 @@
-.ProductFrame {
+.StoreName {
   border: double gray 3px;
   padding: 7px;
   background-color: bisque;
+  text-align: center;
 }
 
-.MyComponentText {
+.ProductContainer {
+  text-align: left;
   font-style: italic;
+}
+.ProductDescription {
+  font-style: italic;
+}
+.ProductDescriptionPhoto {
+  height: 200px;
+  width: 200px;
 }

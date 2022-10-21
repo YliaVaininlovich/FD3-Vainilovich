@@ -16,8 +16,43 @@
     <link rel="stylesheet" text="text/css" href="Product.css" />
 
     <script>
+      var nameStore = "Салон цветов";
+      var productsArr = [
+        {
+          key: 1,
+          name: "Замиокулькас",
+          price: 40,
+          photo: "./photo/zamioculcas.jpg",
+          quantity: 4,
+        },
+        {
+          key: 2,
+          name: "Монстера",
+          price: 20,
+          photo: "./photo/monstera.jpg",
+          quantity: 1,
+        },
+        {
+          key: 3,
+          name: "Спацифиллум",
+          price: 70,
+          photo: "./photo/spathiphyllum.jpg",
+          quantity: 3,
+        },
+        {
+          key: 4,
+          name: "Драцена",
+          price: 120,
+          photo: "./photo/dratsena.jpg",
+          quantity: 7,
+        },
+      ];
+
       ReactDOM.render(
-        React.createElement(Product),
+        React.createElement(Product, {
+          store: nameStore,
+          products: productsArr,
+        }),
         document.getElementById("container")
       );
     </script>
