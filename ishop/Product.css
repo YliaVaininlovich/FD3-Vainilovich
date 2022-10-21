@@ -1,0 +1,9 @@
+.ProductFrame {
+  border: double gray 3px;
+  padding: 7px;
+  background-color: bisque;
+}
+
+.MyComponentText {
+  font-style: italic;
+}
