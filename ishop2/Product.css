@@ -1,10 +1,9 @@
-.StoreName {
+.ProductContainer {
   border: double gray 3px;
   padding: 7px;
   background-color: bisque;
   text-align: center;
 }
-
 .ProductContainer {
   display: flex;
   flex-wrap: wrap;
@@ -27,4 +26,17 @@
 .ProductDescriptionPhoto {
   height: 200px;
   width: 200px;
+}
+.BtnDelete {
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  border-radius: 30px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+.BtnDelete:hover {
+  background-color: blue;
 }
