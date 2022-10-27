@@ -8,8 +8,8 @@ const Store = React.createClass({
   render: function () {
     return React.DOM.div(
       { className: "StoreName" },
-      React.DOM.h1(null, this.props.store)
-      // React.CreateElement(Product, { products: this.props.products })
+      React.DOM.h1(null, this.props.store),
+      React.DOM.CreateElement(Product, { products: this.props.products })
     );
   },
 });
