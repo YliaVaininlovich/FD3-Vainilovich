@@ -12,9 +12,12 @@ const Product = React.createClass({
     ),
   },
 
+  btnClick: function (e) {
+    console.log(e);
+  },
+
   render: function () {
     var productCard = [];
-    console.log(this.props.products);
     this.props.products.forEach(function (element) {
       var productCode = React.DOM.div(
         {
@@ -41,7 +44,7 @@ const Product = React.createClass({
           {
             className: "BtnDelete",
             value: element.serialNumber,
-            onClick: this.handleClick,
+            onClick: this.btnClick,
           },
           "Удалить"
         )
@@ -52,6 +55,14 @@ const Product = React.createClass({
     return React.DOM.div(
       { className: "ProductContainer" },
       React.DOM.div({ className: "ProductContainer" }, productCard)
+      // React.DOM.button(
+      //   {
+      //     className: "BtnDelete",
+      //     "data-key": this.props.products.serialNumber,
+      //     onClick: this.btnClick,
+      //   },
+      //   "Удалить"
+      // )
     );
   },
 });
