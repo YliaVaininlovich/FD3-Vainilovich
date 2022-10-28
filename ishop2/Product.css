@@ -1,16 +1,11 @@
 .ProductContainer {
-  border: double gray 3px;
-  padding: 7px;
-  background-color: bisque;
-  text-align: center;
-}
-.ProductContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   text-align: left;
   font-style: italic;
   margin: 0px;
+  width: 100%;
 }
 .ProductCard {
   font-style: italic;
