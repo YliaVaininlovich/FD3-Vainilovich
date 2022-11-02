@@ -13,16 +13,18 @@ const Store = React.createClass({
   },
 
   clickDelete: function () {
-    console.log("lickDelete: function()");
+    console.log("сlickDelete: function()");
   },
 
   render: function () {
     return React.DOM.div(
       { className: "StoreName" },
       React.DOM.h1(null, this.props.store),
-      React.createElement(Product, {
-        products: this.state.productCurrent,
-        btnDelete: this.state.isClicked,
+      this.state.productCurrent.forEach(function (element) {
+        React.createElement(Product, {
+          products: element,
+        });
+        console.log(element);
       })
     );
   },

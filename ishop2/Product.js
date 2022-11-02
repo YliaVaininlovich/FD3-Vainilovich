@@ -13,56 +13,40 @@ const Product = React.createClass({
   },
 
   btnClick: function (e) {
-    console.log(e);
+    console.log(e.target.getAttribute("value"));
   },
 
   render: function () {
-    var productCard = [];
-    this.props.products.forEach(function (element) {
-      var productCode = React.DOM.div(
-        {
-          key: element.serialNumber,
-          className: "ProductCard",
-        },
-        React.DOM.img({
-          className: "ProductDescriptionPhoto",
-          src: element.photo,
-        }),
-        React.DOM.div(
-          { className: "ProductDescriptionName" },
-          "Наименование:  " + element.name
-        ),
-        React.DOM.div(
-          { className: "ProductDescription" },
-          "Цена:   " + element.price
-        ),
-        React.DOM.div(
-          { className: "ProductDescription" },
-          "Остаток на складе:  " + element.quantity
-        ),
-        React.DOM.button(
-          {
-            className: "BtnDelete",
-            value: element.serialNumber,
-            onClick: this.btnClick,
-          },
-          "Удалить"
-        )
-      );
-      productCard.push(productCode);
-    });
-
     return React.DOM.div(
-      { className: "ProductContainer" },
-      React.DOM.div({ className: "ProductContainer" }, productCard)
-      // React.DOM.button(
-      //   {
-      //     className: "BtnDelete",
-      //     "data-key": this.props.products.serialNumber,
-      //     onClick: this.btnClick,
-      //   },
-      //   "Удалить"
-      // )
+      {
+        className: "ProductContainer",
+        key: this.props.products.serialNumber,
+        className: "ProductCard",
+      },
+      React.DOM.img({
+        className: "ProductDescriptionPhoto",
+        src: this.props.products.photo,
+      }),
+      React.DOM.div(
+        { className: "ProductDescriptionName" },
+        "Наименование:  " + this.props.products.name
+      ),
+      React.DOM.div(
+        { className: "ProductDescription" },
+        "Цена:   " + this.props.products.price
+      ),
+      React.DOM.div(
+        { className: "ProductDescription" },
+        "Остаток на складе:  " + this.props.products.quantity
+      ),
+      React.DOM.button(
+        {
+          className: "BtnDelete",
+          value: this.props.products.serialNumber,
+          onClick: this.btnClick,
+        },
+        "Удалить"
+      )
     );
   },
 });
