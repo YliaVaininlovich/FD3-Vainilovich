@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./store.css";
 import Product from "./product";
+import Card from "./card";
 
 const Store = (props) => {
   const [productList, setList] = useState(props.productList);
@@ -14,25 +15,27 @@ const Store = (props) => {
   };
 
   const cbProductSelected = (product) => {
-    // console.log(product);
     setSelectedProduct(product);
   };
 
   return (
-    <div className="StoreName">
-      <h1>{props.nameStore}</h1>
-      <div className="ProductContainer">
-        {productList.map((element) => (
-          <Product
-            key={element.serialNumber}
-            description={element}
-            cbProductDelete={cbProductDelete}
-            cbProductSelected={cbProductSelected}
-            selectedProduct={selectedProduct}
-          />
-        ))}
+    <>
+      <div className="StoreName">
+        <h1>{props.nameStore}</h1>
+        <div className="ProductContainer">
+          {productList.map((element) => (
+            <Product
+              key={element.serialNumber}
+              description={element}
+              cbProductDelete={cbProductDelete}
+              cbProductSelected={cbProductSelected}
+              selectedProduct={selectedProduct}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+      {selectedProduct !== -1 ? <Card description={selectedProduct} /> : ""}
+    </>
   );
 };
 

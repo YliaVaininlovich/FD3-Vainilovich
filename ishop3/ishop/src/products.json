@@ -1,0 +1,30 @@
+[
+  {
+    "serialNumber": 1,
+    "name": "Замиокулькас",
+    "price": 40,
+    "photo": "https://avatars.dzeninfra.ru/get-zen_doc/5262161/pub_6147d7d8b8bc0046d6e901eb_6147d7fae8623024eb9776f0/scale_1200",
+    "quantity": 4
+  },
+  {
+    "serialNumber": 2,
+    "name": "Монстера",
+    "price": 20,
+    "photo": "https://i.pinimg.com/originals/80/81/2c/80812cd05a97ba9d55c6705e1b852b6a.jpg",
+    "quantity": 1
+  },
+  {
+    "serialNumber": 3,
+    "name": "Спацифиллум",
+    "price": 70,
+    "photo": "https://komnatnyecvety.ru/wp-content/uploads/2021/02/dsc03817.jpg",
+    "quantity": 3
+  },
+  {
+    "serialNumber": 4,
+    "name": "Драцена",
+    "price": 120,
+    "photo": "https://lifeflower.ru/wp-content/uploads/2021/07/dracaena-marginata.jpg",
+    "quantity": 7
+  }
+]

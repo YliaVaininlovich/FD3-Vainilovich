@@ -7,7 +7,6 @@ const Product = (props) => {
   };
 
   const onProductSelect = (product) => {
-    // console.log(product);
     props.cbProductSelected(product);
   };
 
