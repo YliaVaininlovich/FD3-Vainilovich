@@ -2,6 +2,9 @@
   font-style: italic;
   margin-bottom: 30px;
 }
+.Selected {
+  border: 4px double red;
+}
 .ProductDescription {
   font-style: italic;
 }
@@ -11,18 +14,18 @@
 }
 .ProductDescriptionPhoto {
   height: 200px;
-  width: 200px;
+  width: 100%;
 }
-.BtnDelete {
-  width: 100px;
-  height: 30px;
+.BtnProduct {
+  width: 100%;
+  height: 35px;
   background-color: black;
   color: white;
   font-size: 15px;
   border-radius: 30px;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
   cursor: pointer;
 }
-.BtnDelete:hover {
+.BtnProduct:hover {
   background-color: blue;
 }

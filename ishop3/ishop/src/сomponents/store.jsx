@@ -5,12 +5,17 @@ import Product from "./product";
 
 const Store = (props) => {
   const [productList, setList] = useState(props.productList);
+  const [selectedProduct, setSelectedProduct] = useState(-1);
 
   const cbProductDelete = (id) => {
-    console.log("cbProductDelete  " + id);
     setList((prevState) =>
       prevState.filter((prevState) => prevState.serialNumber !== id)
     );
+  };
+
+  const cbProductSelected = (product) => {
+    // console.log(product);
+    setSelectedProduct(product);
   };
 
   return (
@@ -22,6 +27,8 @@ const Store = (props) => {
             key={element.serialNumber}
             description={element}
             cbProductDelete={cbProductDelete}
+            cbProductSelected={cbProductSelected}
+            selectedProduct={selectedProduct}
           />
         ))}
       </div>
