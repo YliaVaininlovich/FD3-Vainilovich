@@ -1,9 +1,9 @@
 import "./product.css";
 
 const Product = (props) => {
-  const handleProductDelete = (serialNumber) => {
+  const handleProductDelete = (element) => {
     const conf = window.confirm(`Are you sure?`);
-    if (conf) props.cbProductDelete(serialNumber);
+    if (conf) props.cbProductDelete(element);
   };
 
   const onProductSelect = (product) => {
@@ -43,7 +43,7 @@ const Product = (props) => {
       </div>
       <button
         className="BtnProduct"
-        onClick={() => handleProductDelete(props.description.serialNumber)}
+        onClick={() => handleProductDelete(props.description)}
       >
         Удалить
       </button>
