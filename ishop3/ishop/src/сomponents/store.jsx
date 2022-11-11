@@ -9,13 +9,7 @@ const Store = (props) => {
   const [productList, setList] = useState(props.productList);
   const [selectedProduct, setSelectedProduct] = useState(-1);
   const [addProduct, setNewProduct] = useState(-1);
-  // const [newItem, setNewItem] = useState({
-  //   "serialNumber": -1,
-  //   "name": "",
-  //   "price": 0,
-  //   "photo": "",
-  //   "quantity": 0
-  // });
+
   
   const cbProductDelete = (element) => {
     setList((prevState) =>
@@ -33,7 +27,9 @@ const Store = (props) => {
   }
 
   const cbAddNewProduct = (newItem) => {
-    console.log("cbAddNewProduct"+newItem);
+    newItem["serialNumber"] = productList.length + 1;
+    setList((prevState) =>prevState.push(newItem));
+    console.log(productList);
   }
 
   const cbCancelNewProduct=() => {

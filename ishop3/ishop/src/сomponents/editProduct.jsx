@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import "./newProduct.css"
+import "./editProduct.css"
 
 
-const NewProduct = (props) => {
+const EditProduct = (props) => {
     
    const [newItemName, setNewItemName] = useState("");
    const [newItemPrice, setnewItemPrice] = useState(0);
@@ -36,7 +36,7 @@ const NewProduct = (props) => {
         setnewItemPhoto(event.target.value);
     };
 
-    const addNewProduct = () => {
+    const saveChangeProduct = () => {
         let newItem = {
             "name": newItemName,
             "price": Number(newItemPrice),
@@ -57,10 +57,10 @@ const NewProduct = (props) => {
             <input type="text" className="labelProduct" onChange={handleInputPrice} placeholder="Введите цену" required pattern="[0-9]+"/>
             <input type="text" className="labelProduct" onChange={handleInputQuantity} placeholder="Введите остаток на складе" required pattern="[0-9]+"/>
             <input type="text" className="labelProduct" onChange={handleInputPhoto} placeholder="Введите ссылку на фото" required />
-            <button className="BtnNew BtnNewCard" id="ok" onClick={addNewProduct} disabled={!isValid}>OK</button>
+            <button className="BtnNew BtnNewCard" id="ok" onClick={saveChangeProduct} disabled={!isValid}>OK</button>
             <button className="BtnNew BtnNewCard" onClick={cancelNewProduct}>Cancel</button>
         </div>
     )
 }
 
-export default NewProduct;
+export default EditProduct;
