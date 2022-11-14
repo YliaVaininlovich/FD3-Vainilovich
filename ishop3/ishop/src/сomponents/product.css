@@ -29,3 +29,6 @@
 .BtnProduct:hover {
   background-color: blue;
 }
+#BtnProduct:disabled{
+  background-color: gray;
+}

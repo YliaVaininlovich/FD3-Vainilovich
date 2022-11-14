@@ -26,3 +26,6 @@
 .BtnNew:hover {
   background-color: blue;
 }
+#BtnNew:disabled{
+  background-color: gray;
+}

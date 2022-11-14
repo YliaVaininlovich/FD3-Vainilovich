@@ -5,14 +5,14 @@ import "./editProduct.css"
 
 const EditProduct = (props) => {
     
-   const [newItemName, setNewItemName] = useState("");
-   const [newItemPrice, setnewItemPrice] = useState(0);
-   const [newItemPhoto, setnewItemPhoto] = useState("");
-    const [newItemQuantity, setnewItemQuantity] = useState("");
-    const [nameValid, setNameValid] = useState(false);
-    const [priceValid, setPriceValid] = useState(false);
-    const [quantityValid, setQuantityValid] = useState(false);
-    const [photoValid, setPhotoValid] = useState(false);
+   const [newItemName, setNewItemName] = useState(props.editProduct.name);
+   const [newItemPrice, setnewItemPrice] = useState(props.editProduct.price);
+   const [newItemPhoto, setnewItemPhoto] = useState(props.editProduct.photo);
+    const [newItemQuantity, setnewItemQuantity] = useState(props.editProduct.quantity);
+    const [nameValid, setNameValid] = useState(true);
+    const [priceValid, setPriceValid] = useState(true);
+    const [quantityValid, setQuantityValid] = useState(true);
+    const [photoValid, setPhotoValid] = useState(true);
       
     const isValid = nameValid && priceValid && quantityValid && photoValid;
 
@@ -38,27 +38,28 @@ const EditProduct = (props) => {
 
     const saveChangeProduct = () => {
         let newItem = {
+            "serialNumber": props.editProduct.serialNumber,
             "name": newItemName,
             "price": Number(newItemPrice),
             "photo": newItemPhoto,
             "quantity":Number(newItemQuantity)  
         };
-        props.addNewProduct(newItem);
+        props.okEditProduct(newItem);
     }
 
-    const cancelNewProduct = () => {
-        props.cancelNewProduct();
+    const cancelEditProduct = () => {
+        props.cancelEditProduct();
     }
 
     return (
         <div className="newContainer">
-            <h2>Новый продукт</h2>
-            <input type="text" className="labelProduct" name="namePr" onChange={handleInputName} placeholder="Введите название" required/>
-            <input type="text" className="labelProduct" onChange={handleInputPrice} placeholder="Введите цену" required pattern="[0-9]+"/>
-            <input type="text" className="labelProduct" onChange={handleInputQuantity} placeholder="Введите остаток на складе" required pattern="[0-9]+"/>
-            <input type="text" className="labelProduct" onChange={handleInputPhoto} placeholder="Введите ссылку на фото" required />
+            <h2>Изменить продукт</h2>
+            <input type="text" className="labelProduct" onChange={handleInputName} value={newItemName} required/>
+            <input type="text" className="labelProduct" onChange={handleInputPrice} value={newItemPrice} required pattern="[0-9]+"/>
+            <input type="text" className="labelProduct" onChange={handleInputQuantity} value={newItemQuantity} required pattern="[0-9]+"/>
+            <input type="text" className="labelProduct" onChange={handleInputPhoto} value={newItemPhoto} required />
             <button className="BtnNew BtnNewCard" id="ok" onClick={saveChangeProduct} disabled={!isValid}>OK</button>
-            <button className="BtnNew BtnNewCard" onClick={cancelNewProduct}>Cancel</button>
+            <button className="BtnNew BtnNewCard" onClick={cancelEditProduct}>Cancel</button>
         </div>
     )
 }

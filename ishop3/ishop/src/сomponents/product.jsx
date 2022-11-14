@@ -1,6 +1,7 @@
 import "./product.css";
 
 const Product = (props) => {
+
   const handleProductDelete = (element) => {
     const conf = window.confirm(`Are you sure?`);
     if (conf) props.cbProductDelete(element);
@@ -10,11 +11,16 @@ const Product = (props) => {
     props.cbProductSelected(product);
   };
 
+  const handleProductEdit = (product) => {
+     props.cbProductEdit(product);
+  };
+
   return (
     <div
       className={
         "ProductCard" +
-        (props.description === props.selectedProduct ? " Selected" : "")
+        (props.description === props.selectedProduct ? " Selected" : "") +
+        (props.description === props.editProduct  ? " Selected" : "")
       }
     >
       <img
@@ -42,12 +48,12 @@ const Product = (props) => {
         Остаток на складе: {props.description.quantity}
       </div>
       <button
-        className="BtnProduct"
-        onClick={() => handleProductDelete(props.description)}
+        className="BtnProduct" id="BtnProduct"
+        onClick={() => handleProductDelete(props.description)} disabled={props.isDisabled}
       >
         Удалить
       </button>
-      <button className="BtnProduct">Редактировать</button>
+      <button className="BtnProduct" id="BtnProduct" onClick={() => handleProductEdit(props.description)} disabled={props.isDisabled}>Редактировать</button>
     </div>
   );
 };
