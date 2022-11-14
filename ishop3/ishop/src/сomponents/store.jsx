@@ -34,7 +34,8 @@ const Store = (props) => {
   }
 
   const cbAddNewProduct = (newItem) => {
-    newItem["serialNumber"] = productList.length + 1;
+    newItem["serialNumber"] = newItem.price + newItem.quantity;
+    console.log(newItem);
     let tempNewProduct = productList;
     tempNewProduct.push(newItem);
     setList(tempNewProduct);
