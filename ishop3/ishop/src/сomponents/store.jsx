@@ -18,8 +18,7 @@ const Store = (props) => {
   let productKeyCurrent = 1;
 
   const cbProductDelete = (element) => {
-    setList((prevState) =>
-      prevState.filter((prevState) => prevState !== element)
+    setList(productList.filter((prevState) => prevState !== element)
     );
     if (element === selectedProduct) setSelectedProduct(-1);
   };
@@ -50,8 +49,9 @@ const Store = (props) => {
   }
 
   const cbProductEdit = (product) => {
-    setStatusEdit(1);
     setEditProduct(product);
+    setStatusEdit(1);
+    console.log(editProduct);
     setSelectedProduct(-1);
   }
 
