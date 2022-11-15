@@ -13,8 +13,9 @@ const Store = (props) => {
   const [statusEdit, setStatusEdit] = useState(-1);
   const [editProduct, setEditProduct] = useState(-1);
   const [statusButtons, setStatusButtons] = useState(false);
-   
-  let isDisabled = statusButtons;
+
+  const isDisabled = statusButtons;
+  let productKeyCurrent = 1;
 
   const cbProductDelete = (element) => {
     setList((prevState) =>
@@ -25,6 +26,7 @@ const Store = (props) => {
 
   const cbProductSelected = (product) => {
     setSelectedProduct(product);
+    console.log(productList);
   };
 
   const clickNewProduct =() => {
@@ -34,13 +36,12 @@ const Store = (props) => {
   }
 
   const cbAddNewProduct = (newItem) => {
-    newItem["serialNumber"] = newItem.price + newItem.quantity;
-    console.log(newItem);
     let tempNewProduct = productList;
     tempNewProduct.push(newItem);
     setList(tempNewProduct);
     setNewProduct(-1);
     setStatusButtons(false);
+    console.log(productList);
   }
 
   const cbCancelNewProduct=() => {
@@ -48,12 +49,16 @@ const Store = (props) => {
     setStatusButtons(false);
   }
 
-  const cbProductEdit=(product) => {
+  const cbProductEdit = (product) => {
     setStatusEdit(1);
     setEditProduct(product);
     setSelectedProduct(-1);
-    setStatusButtons(true);
   }
+
+  const cbChangeProduct = () => {
+     setStatusButtons(true);
+  }
+  
 
   const cbCancelEditProduct=() => {
     setStatusEdit(-1);
@@ -78,7 +83,7 @@ const Store = (props) => {
         <div className="ProductContainer">
           {productList.map((element) => (
             <Product
-              key={element.serialNumber}
+              key={productKeyCurrent++}
               description={element}
               cbProductDelete={cbProductDelete}
               cbProductSelected={cbProductSelected}
@@ -87,14 +92,16 @@ const Store = (props) => {
               editProduct={editProduct}
               isDisabled={statusButtons}
             />
-          ))}
+          ))
+          }
         </div>
       </div>
       <button className="BtnNew" id="BtnNew" onClick={clickNewProduct} disabled={isDisabled}>Новый</button>
       {selectedProduct !== -1 ? <Card description={selectedProduct} /> : ""}
 
       {addProduct === 1 ? <NewProduct addNewProduct={cbAddNewProduct} cancelNewProduct={cbCancelNewProduct} /> : ""}
-      {statusEdit === 1 ? <EditProduct editProduct={editProduct}  okEditProduct={cbEditProduct} cancelEditProduct={cbCancelEditProduct} /> : ""}
+      {statusEdit === 1 ? <EditProduct editProduct={editProduct} changeProduct={cbChangeProduct}
+        okEditProduct={cbEditProduct} cancelEditProduct={cbCancelEditProduct} /> : ""}
     </>
   );
 };

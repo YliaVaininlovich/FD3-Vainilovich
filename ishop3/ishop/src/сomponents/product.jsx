@@ -39,6 +39,12 @@ const Product = (props) => {
         className="ProductDescription"
         onClick={() => onProductSelect(props.description)}
       >
+        Артикул: {props.description.serialNumber}{" "}
+      </div>
+      <div
+        className="ProductDescription"
+        onClick={() => onProductSelect(props.description)}
+      >
         Цена: {props.description.price}{" "}
       </div>
       <div
@@ -53,7 +59,10 @@ const Product = (props) => {
       >
         Удалить
       </button>
-      <button className="BtnProduct" id="BtnProduct" onClick={() => handleProductEdit(props.description)} disabled={props.isDisabled}>Редактировать</button>
+      <button className="BtnProduct" id="BtnProduct"
+        onClick={() => handleProductEdit(props.description)} disabled={props.isDisabled}>
+        Редактировать
+      </button>
     </div>
   );
 };
