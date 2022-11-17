@@ -7,7 +7,7 @@ const RainbowFrame = (props) => {
     
         props.colors.map((color) => (
                 rainbow = 
-                    <div style={{ border: "15px solid "+color , width: "300px", height: "70px", padding: "20px", verticalAlign: "middle", display: "table-cell" }} >
+                    <div style={{ border: "15px solid "+color , width: "900px", height: "70px", padding: "20px", verticalAlign: "middle", display: "table-cell" }} >
                         {rainbow}
                     </div>
             ))
