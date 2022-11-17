@@ -6,9 +6,9 @@ import "./editProduct.css"
 const EditProduct = (props) => {
     
     const [newItemSerialNumber, setNewItemSerialNumber] = useState(props.editProduct.serialNumber);
-   const [newItemName, setNewItemName] = useState(props.editProduct.name);
-   const [newItemPrice, setnewItemPrice] = useState(props.editProduct.price);
-   const [newItemPhoto, setnewItemPhoto] = useState(props.editProduct.photo);
+    const [newItemName, setNewItemName] = useState(props.editProduct.name);
+    const [newItemPrice, setnewItemPrice] = useState(props.editProduct.price);
+    const [newItemPhoto, setnewItemPhoto] = useState(props.editProduct.photo);
     const [newItemQuantity, setnewItemQuantity] = useState(props.editProduct.quantity);
     const [SerialNumberValid, setSerialNumberValid] = useState(true);
     const [nameValid, setNameValid] = useState(true);

@@ -68,7 +68,6 @@ const Store = (props) => {
 
   const cbEditProduct = (product) => {
     let tempNewProduct = productList;
-    console.log(product);
     tempNewProduct = tempNewProduct.map(item => item.serialNumber===product.serialNumber?product:item)
     setList(tempNewProduct);
     setStatusEdit(-1);
