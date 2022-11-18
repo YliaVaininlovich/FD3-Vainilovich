@@ -9,8 +9,8 @@ import RainbowFrame from "./RainbowFrame"
   return (
     <div className="App">
 
-      <RainbowFrame  colors={colors}>
-     
+    <RainbowFrame  colors={colors}>
+      Hello!!!
     </RainbowFrame>
     </div>
   );

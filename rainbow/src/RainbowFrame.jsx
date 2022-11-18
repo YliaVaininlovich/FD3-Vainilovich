@@ -2,7 +2,7 @@ import React from "react";
 
 const RainbowFrame = (props) => {
     
-    let rainbow = 'Hello!!!';
+    let rainbow = props.children;
     
     
         props.colors.map((color) => (
