@@ -6,7 +6,7 @@ const App = () => {
   let text = "первый<br>второй<br/>третий<br />последний"
 
   return (
-    <div className="App">
+    <div className="App" style={{ background: "green", width: "200px" }}>
      
        <BR2JSX text={text}/>
     </div>

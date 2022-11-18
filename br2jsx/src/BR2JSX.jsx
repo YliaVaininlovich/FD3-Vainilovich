@@ -1,21 +1,24 @@
-
+import React from "react"
 const BR2JSX = (props) => {
     
    
     const textArray = props.text.split(/<br\s?\/?>/g);
    
     let text = "";
-    text =  textArray.map((fragment) => {
+    text =  textArray.map((fragment, id) => {
         return (
-            <div style={{ background: "green", width: "200px" }}> {fragment} </div>
+            <React.Fragment key={id}>
+            {id !== 0 && <br />} {fragment}
+        </React.Fragment>
         );
         
     })
 
     return (
         <>
-            {text}
+        {text} 
         </>
+         
     )
 }
 
