@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import "./editProduct.css"
 
@@ -17,6 +18,15 @@ const EditProduct = (props) => {
     const [photoValid, setPhotoValid] = useState(true);
       
     const isValid = SerialNumberValid && nameValid && priceValid && quantityValid && photoValid;
+
+    useEffect(() => {
+        setNewItemSerialNumber(props.editProduct.serialNumber);
+        setNewItemName(props.editProduct.name);
+        setnewItemPrice(props.editProduct.price);
+        setnewItemPhoto(props.editProduct.photo);
+        setnewItemQuantity(props.editProduct.quantity);
+    }, [props]);
+
 
     const handleInputSerialNumber = (event) => {
         setSerialNumberValid(event.target.checkValidity());

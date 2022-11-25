@@ -31,6 +31,7 @@ const Store = (props) => {
   const clickNewProduct =() => {
     setNewProduct(1);
     setSelectedProduct(-1);
+    setStatusEdit(-1);
     setStatusButtons(true);
   }
 
