@@ -25,6 +25,7 @@ const EditProduct = (props) => {
         setnewItemPrice(props.editProduct.price);
         setnewItemPhoto(props.editProduct.photo);
         setnewItemQuantity(props.editProduct.quantity);
+        props.changeProduct();
     }, [props]);
 
 
