@@ -3,7 +3,7 @@ import './App.css';
 // import React, { useEffect } from 'react';
 import { initiateStore } from "./store/store";
 import { Provider } from "react-redux";
-import { useSelector } from 'react-redux'
+//import { useSelector } from 'react-redux'
 import {NameCompanyChange } from "./store/actions"
 
 import MobileCompany from './components/mobileCompany';

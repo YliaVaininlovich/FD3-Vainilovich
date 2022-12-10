@@ -9,8 +9,9 @@ import { useState } from 'react';
 const App=() => {
   
   const [moreLoad, setMoreLoad] = useState(0);
-  const [category, setCategory] = useState('all');
+  const [language, setLanguage] = useState('all');
   const [sort, setSort] = useState('relevance');
+  const [search, setSearch] = useState('js');
 
   const cbMoreLoad = () => {
     let count = moreLoad + 1;
@@ -21,16 +22,21 @@ const App=() => {
   setSort(newSort);
  }
   
- const cbCategory = (newCategory) => {
-  setCategory(newCategory);
+ const cbLanguage = (newLanguage) => {
+  setLanguage(newLanguage);
+ }
+  
+ const cbSearch = (newSearch) => {
+   setSearch(newSearch);
+   console.log(search);
  }
   
   return (
     
     <div className="app">
-      <Header cbSort={cbSort} cbCategory={cbCategory} />
+      <Header cbSort={cbSort} cbLanguage={cbLanguage} cbSearch={cbSearch} />
       <Routes>
-        <Route path="/" element={<CardList moreLoad={moreLoad} sort={sort} category={category} />}>
+        <Route path="/" element={<CardList moreLoad={moreLoad} sort={sort} language={language} search={search} />}>
         </Route>
         <Route path="/info" element={<InfoBook/>}>
         </Route>

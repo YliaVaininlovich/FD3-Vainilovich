@@ -1,9 +1,10 @@
 * {
   margin: 0px;
   padding: 0px;
+  list-style: none;
 }
 .header {
-  width: 100%;
+  width: 100vw;
   height: 200px;
   background-image: url("/src/assets/img/books2.jpg");
   background-repeat: no-repeat;
@@ -33,8 +34,32 @@
   height: 30px;
   margin-left: 10px;
 }
-.category-sort {
+.language-sort {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 450px) and (min-width: 380px) {
+
+  .input-search {
+    width: 330px;
+  }
+
+}
+
+@media (max-width: 380px) and (min-width: 320px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .input-search {
+    width: 250px;
+  }
+
+  .select {
+    width: 140px;
+    height: 30px;
+    margin-left: 10px;
+  }
 }

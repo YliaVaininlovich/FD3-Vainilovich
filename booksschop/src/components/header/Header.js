@@ -1,13 +1,15 @@
 import "./Header.css"
-import React from 'react';
+import React, { useState} from 'react';
 
 const Header = (props) => {
 
-  const categoryList = ['all', 'art', 'biography', 'computers','history', 'medical', 'poetry'];
-  const onTriggerCategory = (category) => {
-    return props.cbCategory(category);
+  const languageList = ['all', 'en', 'ru', 'id', 'fi'];
+
+  const [input, setInput] = useState("");
+
+  const onTriggerLanguage = (language) => {
+    return props.cbLanguage(language);
   };
-   
    
    const onTriggerSort = (sort) => {
     return props.cbSort(sort);
@@ -15,17 +17,17 @@ const Header = (props) => {
    
     return (
      <header className="header">
-      
+      <div className='search'>
       <p className="title">Search for books</p>
-      <form action="" method="get">
-         <input className="input-search" placeholder="js" type="search"/>
-         <button className="button-search" type="submit">Поиск</button>
-      </form>
-      <div className="category-sort"> 
-        <div className="category" onChange={(event) => {onTriggerCategory(event.target.value)}}>
-          <label className="title-label">Category&nbsp;&nbsp;</label>
+          <input className="input-search" placeholder="js"
+            value={input} onChange={(event) => { setInput(event.target.value) }} />
+         <button className="button-search" type="submit" onClick={()=>props.cbSearch(input)}>Поиск</button>
+      </div>
+      <div className="language-sort"> 
+        <div className="language" onChange={(event) => {onTriggerLanguage(event.target.value)}}>
+          <label className="title-label">&nbsp;Language&nbsp;</label>
           <select className="select">
-              {categoryList.map ((item, key=1) => (
+              {languageList.map ((item, key=1) => (
                 <option key={key}>{item}</option>
               ))}
           </select>

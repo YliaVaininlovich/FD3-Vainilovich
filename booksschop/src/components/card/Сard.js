@@ -1,6 +1,6 @@
 import "./Card.css";
 import React from 'react';
-
+import noImage from '../../assets/img/no-image.png'
 
 const Card = (props) => {
   
@@ -8,12 +8,12 @@ const Card = (props) => {
       <div>
         
         <div className="container-card">
-         <img className="cover" src={props.card.volumeInfo.imageLinks.smallThumbnail}  alt="img-book"/>
+         <img className="cover" src={props.card.volumeInfo.imageLinks?.smallThumbnail || noImage}  alt="img-book"/>
          <br></br>
-         <div className="about">
-           <a className="link-category" href="/info">{props.category}</a>
+         <div className="about">  
             <p className="title-book">{props.card.volumeInfo.title}</p>
-             <p className="authors">{props.card.volumeInfo.authors}</p>
+            <p className="authors">{props.card.volumeInfo.authors}</p>
+            <p className="link-language">Язык:  {props.card.volumeInfo.language}</p>
          </div>
         </div>
     </div>

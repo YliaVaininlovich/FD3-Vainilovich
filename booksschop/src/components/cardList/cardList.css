@@ -3,7 +3,39 @@
   padding: 0px;
 }
 .card-list {
+  max-width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
+}
+@media (max-width: 840px) and (min-width: 600px) {
+
+  .card-list {
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+}
+
+@media (max-width: 600px) and (min-width: 320px) {
+
+  .card-list {
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+}
+@media (max-width: 410px)  {
+
+  .card-list {
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
 }
