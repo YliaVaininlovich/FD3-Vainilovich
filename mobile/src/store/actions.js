@@ -6,6 +6,15 @@ const NameCompanyChange = function (newName) {
     };
 }
   
+const BalanceChange = function (id, newBalance) {
+  return {
+    type: "balance/change",
+    balance: newBalance,
+    idClient : id,
+  };
+}
+
 export {
-    NameCompanyChange
+  NameCompanyChange,
+  BalanceChange
 }

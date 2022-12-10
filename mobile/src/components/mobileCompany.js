@@ -1,15 +1,16 @@
 import React from 'react';
-import {useState} from "react"
-
+import { useSelector, useDispatch } from 'react-redux'
+import {BalanceChange } from "../store/actions"
 import MobileClient from './mobileClients';
 
 import './mobileCompany.css';
 
 const MobileCompany = (props) => {
 
-   const [clients, setStateClients] = useState(props.clients);
-
- 
+  
+  const clients = useSelector((state) => state.clientsArr);
+  const dispatch = useDispatch();
+  
   const setName1 = () => {
     props.cbCompanyNameMTS('МТС');
   };
@@ -19,19 +20,9 @@ const MobileCompany = (props) => {
   };
   
   const setBalance = (clientId,newBalance) => {
-    let newClients=[...clients]; // копия самого массива клиентов
-    newClients.forEach( (c,i) => {
-      if ( c.id===clientId ) {
-      //if ( c.id==clientId && c.balance!==newBalance ) {
-        let newClient={...c}; // копия хэша изменившегося клиента
-        newClient.balance=newBalance;
-        newClients[i]=newClient;
-      }
-    } );
-    setStateClients(newClients);
+    dispatch(BalanceChange(clientId,newBalance));
   };
 
-   
   const setBalance1 = () => {
    setBalance(105,230);
   };
@@ -41,7 +32,7 @@ const MobileCompany = (props) => {
   };
   
      return (
-      <div className='MobileCompany'>
+       <div className='MobileCompany'>
         <input type="button" value="=МТС" onClick={setName1} />
         <input type="button" value="=A1" onClick={setName2} />
         <div className='MobileCompanyName'>Компания &laquo;{props.name}&raquo;</div>
