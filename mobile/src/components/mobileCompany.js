@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import {BalanceChange } from "../store/actions"
 import MobileClient from './mobileClients';
+import { NameCompanyChange } from "../store/actions"
 
 import './mobileCompany.css';
 
@@ -9,14 +10,16 @@ const MobileCompany = (props) => {
 
   
   const clients = useSelector((state) => state.clientsArr);
-  const dispatch = useDispatch();
+  const companyName = useSelector((state) => state.companyName);
   
+  const dispatch = useDispatch();
+    
   const setName1 = () => {
-    props.cbCompanyNameMTS('МТС');
+    dispatch(NameCompanyChange({ companyName: "MTC" }));
   };
 
   const setName2 = () => {
-    props.cbCompanyNameA1("A1");
+    dispatch(NameCompanyChange({ companyName: "A1" }));
   };
   
   const setBalance = (clientId,newBalance) => {
@@ -35,7 +38,7 @@ const MobileCompany = (props) => {
        <div className='MobileCompany'>
         <input type="button" value="=МТС" onClick={setName1} />
         <input type="button" value="=A1" onClick={setName2} />
-        <div className='MobileCompanyName'>Компания &laquo;{props.name}&raquo;</div>
+        <div className='MobileCompanyName'>Компания &laquo;{companyName}&raquo;</div>
         <div className='MobileCompanyClients'>
           {clients.map( client =>
       <MobileClient key={client.id} info={client}  />)}
