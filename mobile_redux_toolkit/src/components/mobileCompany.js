@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import {BalanceChange } from "../store/actions"
 import MobileClient from './mobileClients';
-import { NameCompanyChange } from "../store/actions"
+import { NameCompanyChange } from "../store/reducer"
+import {BalanceChange } from "../store/reducer"
 
 import './mobileCompany.css';
 
-const MobileCompany = (props) => {
+const MobileCompany = () => {
 
   
   const clients = useSelector((state) => state.clientsArr);
