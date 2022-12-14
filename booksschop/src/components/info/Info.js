@@ -1,26 +1,32 @@
 import "./Info.css"
-import image from "../../assets/img/Node-js-Notes-for-Professionals.png"
+import noImage from '../../assets/img/no-image.png'
 
-const InfoBook = () => {
-
+const InfoBook = ({show, bookItem, onClose}) => {
     return (
-      <div className="container">
-       <div className="info-cover">
-            <img className="img-cover" src={image} />
-       </div>
-       <div className="info-details">
-        <p className="info-category">Category</p>
-        <p className="info-title">Title</p>
-        <div className="info-authors">
-        <a  className="info-ref" href="#">Authors</a>
-        </div>
-        {/* <textarea className="info-description" defaultValue={'DEFAULT'} rows="5" cols="70">
-              It was a dark and stormy night...
-          </textarea> */}
-       </div>
-      </div>
+      <>
+            {(show) ? (
+                <div className="container">
+                    <button className="close-modal" onClick={onClose}>Close</button>
+                    <div className="info-cover">
+                        <img className="img-cover" src={bookItem.card.volumeInfo.imageLinks?.smallThumbnail || noImage} alt="img-book"/>
+                    </div>
+                    <div className="info-details">
+              <p className="info-category">Category:  {bookItem.card.volumeInfo.categories}</p>
+                        <p className="info-title">Title: {bookItem.card.volumeInfo.title}</p>
+              <p className="info-authors">Authors: {bookItem.card.volumeInfo.authors}</p>
+              <p className="info-description">Description</p>
+                        <p className="description"> {bookItem.card.volumeInfo.description}</p>
+                       
+                    </div>
+                </div>
+            ) : null
+
+            }
+
+        </>
+
     );
-  }
-  
-  export default InfoBook;
+}
+
+export default InfoBook;
   

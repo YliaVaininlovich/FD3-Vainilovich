@@ -7,34 +7,59 @@
   text-align: center;
 }
 .container-card {
-  /* width: 250px; */
+  display:flex;
+  flex-direction :column;
   height: 450px;
   background-color: rgb(223, 220, 220);
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 20px;
   margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px 3px gray;
+  justify-content :space-between;
+  align-items: center;
+
 }
+
 .cover {
   display: flex;
   margin: 0px auto;
   width: 200px;
+  height: 250px;
 }
 .about {
   text-align: left;
+  
 }
 .title-book {
   font-weight: 500;
   font-family: "Abril Fatface";
   font-size: 16px;
-  margin: 15px 0px;
+  margin: 0px 0px 10px 0px;
 }
 .authors {
   color: gray;
+    
 }
 .link-language {
   color: gray;
 }
+
+.selected {
+  transition: transform 1s linear;
+  transform: perspective(600px) rotateY(360deg);
+}
+
+.button-delete {
+  border-radius: 20px;
+  box-shadow: inset 0 0 3px 3px gray;
+  width: 150px;
+  height: 30px;
+  margin-bottom: 5px;
+ 
+}
+
 
 @media (max-width: 930px)  {
 

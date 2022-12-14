@@ -8,6 +8,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
+
+
 @media (max-width: 840px) and (min-width: 600px) {
 
   .card-list {
