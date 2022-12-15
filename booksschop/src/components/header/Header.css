@@ -33,6 +33,10 @@
   width: 80px;
   height: 30px;
 }
+.button-search:hover{
+  background-color: rgb(221, 218, 218);
+}
+
 .sort {
   margin-top: 20px;
 }

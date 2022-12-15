@@ -59,6 +59,9 @@
   margin-bottom: 5px;
  
 }
+.button-delete:hover{
+  background-color: rgb(221, 218, 218);
+}
 /* анимация  */
 
 .container-card-enter {

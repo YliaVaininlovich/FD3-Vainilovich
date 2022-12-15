@@ -12,7 +12,7 @@ const Pagination = () => {
     const dispatch = useDispatch();
 
     const pageCount = Math.ceil(cardList.length / pageSize);
-    if (pageCount == 1) return null;
+    if (pageCount === 1) return null;
     const pages = _.range(1, pageCount + 1);
 
     const onPrevious = () => {
@@ -28,18 +28,19 @@ const Pagination = () => {
     return ( 
 <nav>
   <ul className="pagination">
-                <li className="page-item"><a className={"page-link" + (currentPage===1? " noactive" : "")}
-                    onClick={onPrevious}>Previous</a></li>
+                <li className="page-item">
+                    <button className={"link-button" + (currentPage === 1 ? " noactive" : "")} href="#"
+                    onClick={onPrevious}>Previous</button></li>
 
                 {pages.map((page) => <li className={"page-item" + (page===currentPage? " active" : "") }
                     key={page}
                 >
-                    <a className="page-link"
-                    key={page} onClick={() => dispatch(changeCurrentPage(page))}>{page}</a></li>   
+                    <button className="link-button"
+                    key={page} onClick={() => dispatch(changeCurrentPage(page))}>{page}</button></li>   
                 )}
 
-                <li className="page-item"><a className={"page-link" + (currentPage===pageCount? " noactive" : "")}
-                    onClick={onNext}>Next</a></li>
+                <li className="page-item"><button className={"link-button" + (currentPage===pageCount? " noactive" : "")}
+                    onClick={onNext}>Next</button></li>
   </ul>
 </nav>
 

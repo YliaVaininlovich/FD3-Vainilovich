@@ -8,13 +8,14 @@
     justify-content: center;
 
 }
-.page-item{
+.page-item
+{
     height: 30px;
     font-size: 24px;
     padding: 10px 15px;
     margin: 5px;
     border-radius: 20px;
-  box-shadow: inset 0 0 3px 3px gray;
+    box-shadow: inset 0 0 3px 3px gray;
 }
 .active{
     background-color: gray;
@@ -22,3 +23,10 @@
 .noactive{
     color:rgb(158, 153, 153);
 }
+.link-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 24px;
+  }
