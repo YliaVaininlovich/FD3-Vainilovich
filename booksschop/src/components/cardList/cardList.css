@@ -9,6 +9,24 @@
   grid-gap: 20px;
 }
 
+/* анимация  */
+
+.example-enter {
+  opacity: 0;
+}
+.example-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.example-exit {
+  opacity: 1;
+}
+.example-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
+/* ------------- */
 @media (max-width: 840px) and (min-width: 600px) {
 
   .card-list {

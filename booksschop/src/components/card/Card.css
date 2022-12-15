@@ -62,24 +62,6 @@
 .button-delete:hover{
   background-color: rgb(221, 218, 218);
 }
-/* анимация  */
-
-.container-card-enter {
-  opacity: 0;
-}
-.container-card-enter-active {
-  opacity: 1;
-  transition: opacity 1000ms ease-in;
-}
-.container-card-exit {
-  opacity: 1;
-}
-.container-card-exit-active {
-  opacity: 0;
-  transition: opacity 1000ms ease-in;
-}
-
-/* ------------- */
 
 @media (max-width: 930px)  {
 

@@ -1,15 +1,21 @@
 import Card from '../card/Сard';
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 import "./cardList.css"
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
-import {initBooksList } from "../../store/reducer"
+import { initBooksList } from "../../store/reducer"
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+
 import Pagination from '../pagination/pagination';
 
 export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
 
  const CardList = (props) => {
-
+    const [open, setOpen] = useState(false)
+   
    const cardList = useSelector((state) => state.books);
    const search = useSelector((state) => state.search);
    const sort = useSelector((state) => state.sort);
@@ -58,12 +64,18 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
           ?
           <p>Нет данных.</p>
           :  
-          <div className="card-list">
+         
+          //  <div className="card-list">
+           <TransitionGroup component='div' className="card-list">
             {viewList.map((item, keyID = 1) => (
-              <Card key={keyID++} card={item} />
+               <CSSTransition key={item.id} in={open} timeout={1000} classNames='example' unmountOnExit> 
+                <Card key={keyID++} card={item} />
+              </CSSTransition>
             ))
-            }
-          </div>   
+              }
+            </TransitionGroup> 
+          //  </div>   
+        
         }
         <Pagination />
       </>

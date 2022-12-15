@@ -15,8 +15,6 @@ const Card = (props) => {
   const [show, setShow] = useState(false);
   const [bookItem, setBookItem] = useState();
 
- 
-
   const changeHoverEnter = () =>{
     let newCardHover = props.card;
     setStateisHover(newCardHover);
@@ -26,15 +24,15 @@ const Card = (props) => {
   }
 
   const BookDelete = (book) => {
-    let newcardList =  cardList.filter((item) => item !== book);
-    dispatch(removeBook(newcardList));
+    let newcardList = cardList.filter((item) => item !== book);
+      dispatch(removeBook(newcardList));
   }
 
     return (
       <div>
 
         <div className="container-card" >
-        
+            
           <img className={"cover" + ((props.card === cardHover && !idDisabled) ? " selected" : "") }     
                onMouseEnter={changeHoverEnter} onMouseLeave={changeHoverLeave}
             src={props.card.volumeInfo.imageLinks?.smallThumbnail || noImage} alt="img-book"
@@ -65,7 +63,8 @@ const Card = (props) => {
             </div>
      
           <button className="button-delete" onClick={() => BookDelete(props.card)}
-            disabled={idDisabled}>Удалить</button>
+              disabled={idDisabled}>Удалить</button>
+            
           </div>
         
         <InfoBook show={show} bookItem={bookItem} onClose={() => {

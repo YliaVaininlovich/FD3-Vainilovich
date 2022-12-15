@@ -24,6 +24,8 @@ const booksShopSlice = createSlice({
 
     deleteBook(state, action) {
       state.books = [...action.payload.newBookList];
+      const pageCount = Math.ceil(state.books.length / state.pageSize);
+      if (pageCount < state.currentPage) state.currentPage--;
     },
   
     searhModify(state, action) {
