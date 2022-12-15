@@ -4,6 +4,7 @@ import "./cardList.css"
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import {initBooksList } from "../../store/reducer"
+import Pagination from '../pagination/pagination';
 
 export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
 
@@ -12,9 +13,11 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
    const cardList = useSelector((state) => state.books);
    const search = useSelector((state) => state.search);
    const sort = useSelector((state) => state.sort);
-  const dispatch = useDispatch();
-   
+   const currentPage = useSelector((state) => state.currentPage);
+   const pageSize = useSelector((state) => state.pageSize);
 
+   const dispatch = useDispatch();
+   
    useEffect(() => {
      getData();
    }, []);
@@ -38,7 +41,13 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
     ); 
    }
      
-   
+   const paginate = () => {
+     const startIndex = (currentPage - 1) * pageSize;
+     return [...cardList].splice(startIndex, pageSize);
+   }
+
+   const viewList = paginate();
+
     return (
        
       <>
@@ -50,12 +59,13 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
           <p>Нет данных.</p>
           :  
           <div className="card-list">
-            {cardList.map((item, keyID = 1) => (
+            {viewList.map((item, keyID = 1) => (
               <Card key={keyID++} card={item} />
             ))
             }
           </div>   
         }
+        <Pagination />
       </>
        );
     }

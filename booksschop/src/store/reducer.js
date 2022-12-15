@@ -4,7 +4,9 @@ const initialState = {
   books : [],
   search: "js",
   sort: "relevance",
-  idDisabled : false
+  idDisabled: false,
+  currentPage: 1,
+  pageSize : 12
 };
 
 const booksShopSlice = createSlice({
@@ -35,6 +37,9 @@ const booksShopSlice = createSlice({
       state.idDisabled = action.payload.IsDisabled;
     },
 
+    changeActivePage(state, action) {
+      state.currentPage = action.payload.currentPage;
+    },
   }
   });
 
@@ -45,7 +50,8 @@ const { initState,
   deleteBook,
   searhModify,
   sortModify,
-  changeIsDisabled } = actions
+  changeIsDisabled,
+  changeActivePage} = actions
 
 export const initBooksList = function (booksList) {
   return initState(
@@ -80,6 +86,12 @@ export const sortChange = function (sort) {
 export const changeDisabled = function (status) {
   return changeIsDisabled(
     { IsDisabled:  status}
+  );
+}
+
+export const changeCurrentPage = function (newCurrentPage) {
+  return changeActivePage (
+    { currentPage:  newCurrentPage}
   );
 }
 

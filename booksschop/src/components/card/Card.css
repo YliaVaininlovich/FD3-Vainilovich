@@ -9,7 +9,7 @@
 .container-card {
   display:flex;
   flex-direction :column;
-  height: 450px;
+  height: 480px;
   background-color: rgb(223, 220, 220);
   padding-left: 10px;
   padding-right: 10px;
