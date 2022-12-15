@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   books : [],
   search: "js",
-  sort : "relevance"
+  sort: "relevance",
+  idDisabled : false
 };
 
 const booksShopSlice = createSlice({
@@ -30,13 +31,21 @@ const booksShopSlice = createSlice({
     sortModify(state, action) {
       state.sort =action.payload.newSort;
     },
+    changeIsDisabled(state, action) {
+      state.idDisabled = action.payload.IsDisabled;
+    },
 
   }
   });
 
 
 const {actions, reducer:booksShopReducer} = booksShopSlice
-const {initState, updatetState, deleteBook, searhModify, sortModify} = actions
+const { initState,
+  updatetState,
+  deleteBook,
+  searhModify,
+  sortModify,
+  changeIsDisabled } = actions
 
 export const initBooksList = function (booksList) {
   return initState(
@@ -65,6 +74,12 @@ export const searhChange = function (search) {
 export const sortChange = function (sort) {
   return sortModify(
     { newSort:  sort}
+  );
+}
+
+export const changeDisabled = function (status) {
+  return changeIsDisabled(
+    { IsDisabled:  status}
   );
 }
 

@@ -3,16 +3,19 @@ import React, {useState} from 'react';
 import noImage from '../../assets/img/no-image.png'
 import InfoBook from "../info/Info";
 import { useSelector, useDispatch } from 'react-redux'
-import { removeBook } from "../../store/reducer"
+import { changeDisabled, removeBook } from "../../store/reducer"
 
 const Card = (props) => {
   
   const cardList = useSelector((state) => state.books);
+  const idDisabled = useSelector((state) => state.idDisabled);
   const dispatch = useDispatch();
 
   const [cardHover, setStateisHover] = useState('');
   const [show, setShow] = useState(false);
   const [bookItem, setBookItem] = useState();
+
+ 
 
   const changeHoverEnter = () =>{
     let newCardHover = props.card;
@@ -29,22 +32,30 @@ const Card = (props) => {
 
     return (
       <div>
-        
+
         <div className="container-card" >
-    
-          <img className={"cover" + (props.card === cardHover ? " selected" : "") }     
+        
+          <img className={"cover" + ((props.card === cardHover && !idDisabled) ? " selected" : "") }     
                onMouseEnter={changeHoverEnter} onMouseLeave={changeHoverLeave}
             src={props.card.volumeInfo.imageLinks?.smallThumbnail || noImage} alt="img-book"
+            
             onClick={() => {
-              setShow(true);
-              setBookItem(props);
+              if (!idDisabled) {
+                setShow(true);
+                dispatch(changeDisabled(true));
+                setBookItem(props);
+              }
             }}
+
           />
          
           <div className="about"
-          onClick={() => {
-            setShow(true);
-            setBookItem(props);
+            onClick={() => {
+              if (!idDisabled) {
+                setShow(true);
+                dispatch(changeDisabled(true));
+                setBookItem(props);
+              }
             }}
           >  
             <p className="title-book">{props.card.volumeInfo.title}</p>
@@ -53,10 +64,14 @@ const Card = (props) => {
            
             </div>
      
-         <button className="button-delete"  onClick={() =>BookDelete(props.card)}>Удалить</button>
-        </div>
-
-        <InfoBook show={show} bookItem={bookItem} onClose={()=>setShow(false)}/>
+          <button className="button-delete" onClick={() => BookDelete(props.card)}
+            disabled={idDisabled}>Удалить</button>
+          </div>
+        
+        <InfoBook show={show} bookItem={bookItem} onClose={() => {
+          setShow(false);
+          dispatch(changeDisabled(false));
+        }} />
     </div>
     );
   }
