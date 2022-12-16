@@ -56,7 +56,8 @@ const Card = (props) => {
               }
             }}
           >  
-            <p className="title-book">{props.card.volumeInfo.title}</p>
+            <p className="title-book">
+              {(props.card.volumeInfo.title.length > 60 ? props.card.volumeInfo.title.slice(0,60)+"..." : props.card.volumeInfo.title)}</p>
             <p className="authors">{props.card.volumeInfo.authors}</p>
             <p className="link-language">Language:  {props.card.volumeInfo.language}</p>
            

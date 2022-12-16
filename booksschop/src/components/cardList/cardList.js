@@ -4,6 +4,7 @@ import "./cardList.css"
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { initBooksList } from "../../store/reducer"
+import { keyAPI } from "../../getData";
 import {
   CSSTransition,
   TransitionGroup,
@@ -11,10 +12,8 @@ import {
 
 import Pagination from '../pagination/pagination';
 
-export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
-
- const CardList = (props) => {
-    const [open, setOpen] = useState(false)
+ const CardList = () => {
+  const [open, setOpen] = useState(false)
    
    const cardList = useSelector((state) => state.books);
    const search = useSelector((state) => state.search);
@@ -25,13 +24,14 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
    const dispatch = useDispatch();
    
    useEffect(() => {
-     getData();
+     if (cardList.length === 0) {
+       getData();
+     }
    }, []);
-   
+     
    useEffect(() => {
-    getData();
-  }, [sort, search]);
-   
+      getData();
+   }, [search, sort]);
    
   const getData = async () => {
     const apiURL = `https://www.googleapis.com/books/v1/volumes?` +
@@ -62,19 +62,20 @@ export const keyAPI = "AIzaSyBrD2-_UsjIf7FrFvZO9CR3RAV07zrJFCw";
           &nbsp; results</h2>
         {(!cardList || cardList.length === 0)
           ?
-          <p>Нет данных.</p>
+          <h1 className="found-result">Нет данных</h1>
           :  
          
-          //  <div className="card-list">
-           <TransitionGroup component='div' className="card-list">
+          <div className="card-list">
+           {/* <TransitionGroup component='div' className="card-list"> */}
+            {/* если включить пагинацию следует cardList заменить на viewList для постраничного отображения */}
             {viewList.map((item, keyID = 1) => (
-               <CSSTransition key={item.id} in={open} timeout={1000} classNames='example' unmountOnExit> 
+              //  <CSSTransition key={item.id} in={open} timeout={1000} classNames='example' unmountOnExit> 
                 <Card key={keyID++} card={item} />
-              </CSSTransition>
+              // </CSSTransition>
             ))
               }
-            </TransitionGroup> 
-          //  </div>   
+             {/* </TransitionGroup> */}
+          </div>   
         
         }
         <Pagination />

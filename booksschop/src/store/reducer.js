@@ -6,7 +6,7 @@ const initialState = {
   sort: "relevance",
   idDisabled: false,
   currentPage: 1,
-  pageSize : 12
+  pageSize : 50
 };
 
 const booksShopSlice = createSlice({

@@ -1,25 +1,30 @@
-import Header from './components/header/Header'
-import CardList from './components/cardList/cardList'
-import Footer from './components/footer/Footer';
-import  { Route, Routes} from "react-router-dom";
-import InfoBook from './components/info/Info';
-import './App.css';
+import React from "react";
 
-const App=() => {
-  
-  
-  
-  return ( 
-    <div className="app">
-      <Header />
+import "./App.css";
+import { Route, Routes, Link } from "react-router-dom";
+import About from "./components/about/about";
+import Error from "./components/error/error";
+import BooksSchop from "./components/booksShop/booksShop";
+
+function App() {
+  return (
+    <>
+      <p className="nav">
+      <Link className="nav-link" to="/">
+          Search for books
+        </Link>
+        <span className="nav-link"> | </span>
+        <Link className="nav-link" to="/about">
+          About us
+        </Link>
+      </p>
+
       <Routes>
-        <Route path="/" element={<CardList />}>
-        </Route>
-        <Route path="/info" element={<InfoBook/>}>
-        </Route>
+        <Route path="/" element={<BooksSchop />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
-      <Footer />
-    </div>
+    </>
   );
 }
 

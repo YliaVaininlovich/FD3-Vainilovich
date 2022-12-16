@@ -1,34 +1,37 @@
 import "./Header.css"
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { searhChange } from "../../store/reducer"
 import { sortChange } from "../../store/reducer"
-import React, { useRef} from 'react';
+import React, { useRef } from 'react';
 
 const Header = () => {
 
   
-  const search = useRef(null);
+  const refSearch = useRef(null);
+
+  const search = useSelector((state) => state.search);
+  const sort = useSelector((state) => state.sort);
   const dispatch = useDispatch();
    
   const onTriggerSearch = () => {
-    dispatch(searhChange(search.current.value));
+    dispatch(searhChange(refSearch.current.value));
   };
 
    const onTriggerSort = (sort) => {
-    dispatch(sortChange(sort))
+     dispatch(sortChange(sort))
   };
    
     return (
      <header className="header">
       <div className='search'>
       <p className="title">Search for books</p>
-          <input className="input-search" placeholder="js" ref={search} />
+         <input className="input-search" placeholder={search} ref={refSearch} />
          <button className="button-search" type="submit" onClick={onTriggerSearch}>Поиск</button>
       </div>
       
        
         <div className="sort" onChange={(event) => onTriggerSort(event.target.value)}>
-        <select className="select">
+        <select className="select" defaultValue={sort}>
             <option>relevance</option>
             <option>newest</option>
           </select>

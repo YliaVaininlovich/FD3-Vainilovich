@@ -2,3 +2,14 @@
   text-align: center;
 }
 
+.nav {
+  font-family: "Abril Fatface";
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0px;
+  background-color: black;
+}
+.nav-link {
+  color: aliceblue;
+  text-decoration: none;
+}
